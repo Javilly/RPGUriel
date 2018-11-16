@@ -1,0 +1,9 @@
+<root>
+<itemName>Pocion de Velocidad de movimiento</itemName>
+<itemID>10</itemID>
+<itemDesc>Pocion que te hace correr re fast and furius</itemDesc>
+<itemIcon>items_44</itemIcon>
+<potEffect>1</potEffect>
+<potDuration>10</potDuration>
+<itemType>Consumable</itemType>
+</root>

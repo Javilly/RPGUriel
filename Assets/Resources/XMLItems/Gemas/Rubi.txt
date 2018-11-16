@@ -1,0 +1,9 @@
+<root>
+<itemName>Rubi</itemName>
+<itemID>8</itemID>
+<itemDesc>Gema con poderes de fuego que te otorga daño explosivo</itemDesc>
+<itemIcon>items_212</itemIcon>
+<gemElement>3</gemElement>
+<gemAbility>3</gemAbility>
+<itemType>Gem</itemType>
+</root>

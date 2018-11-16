@@ -1,0 +1,9 @@
+<root>
+<itemName>Pocion de Daño</itemName>
+<itemID>11</itemID>
+<itemDesc>Pocion que te aumenta el daño</itemDesc>
+<itemIcon>items_42</itemIcon>
+<potEffect>2</potEffect>
+<potDuration>10</potDuration>
+<itemType>Consumable</itemType>
+</root>

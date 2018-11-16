@@ -1,0 +1,9 @@
+<root>
+<itemName>Pocion de Velocidad de ataque</itemName>
+<itemID>12</itemID>
+<itemDesc>Pocion que te permite atacar mas rapido</itemDesc>
+<itemIcon>items_40</itemIcon>
+<potEffect>3</potEffect>
+<potDuration>10</potDuration>
+<itemType>Consumable</itemType>
+</root>

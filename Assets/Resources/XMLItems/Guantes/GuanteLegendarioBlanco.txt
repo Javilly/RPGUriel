@@ -1,0 +1,9 @@
+<root>
+<itemName>Guante Legendario Blanco</itemName>
+<itemID>4</itemID>
+<itemDesc>Las leyendas cuentan que este guante contiene el poder de la luz</itemDesc>
+<itemIcon>items_209</itemIcon>
+<itemAtk>13</itemAtk>
+<itemSpeed>6</itemSpeed>
+<itemType>Glove</itemType>
+</root>

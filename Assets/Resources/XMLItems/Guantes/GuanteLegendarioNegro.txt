@@ -1,0 +1,9 @@
+<root>
+<itemName>Guante Legendario Negro</itemName>
+<itemID>5</itemID>
+<itemDesc>Las leyendas cuentan que este guante contiene el poder de la oscuridad</itemDesc>
+<itemIcon>items_210</itemIcon>
+<itemAtk>13</itemAtk>
+<itemSpeed>6</itemSpeed>
+<itemType>Glove</itemType>
+</root>

@@ -1,0 +1,9 @@
+<root>
+<itemName>Pocion de Vida</itemName>
+<itemID>9</itemID>
+<itemDesc>Pocion que te recupera 10 de vida</itemDesc>
+<itemIcon>items_38</itemIcon>
+<potEffect>0</potEffect>
+<potDuration>1</potDuration>
+<itemType>Consumable</itemType>
+</root>

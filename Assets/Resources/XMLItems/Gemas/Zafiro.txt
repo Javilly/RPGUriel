@@ -1,0 +1,9 @@
+<root>
+<itemName>Zafiro</itemName>
+<itemID>7</itemID>
+<itemDesc>Gema con poderes de rayo que te proporciona un dash</itemDesc>
+<itemIcon>items_213</itemIcon>
+<gemElement>1</gemElement>
+<gemAbility>1</gemAbility>
+<itemType>Gem</itemType>
+</root>

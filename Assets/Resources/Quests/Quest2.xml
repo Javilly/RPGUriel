@@ -1,0 +1,17 @@
+<Quest>
+<QuestTitle>Sample Quest</QuestTitle>
+<Nodes>
+<Node>
+<NodeTitle>Weon</NodeTitle>
+<NodeText>Quiero Potis</NodeText>
+<NodeImage>NPCIcon</NodeImage>
+</Node>
+<Node>
+<NodeTitle>Weon</NodeTitle>
+<NodeText>
+Gracias por las potis wacho
+</NodeText>
+<NodeImage>NPCIcon</NodeImage>
+</Node>
+</Nodes>
+</Quest>

@@ -1,0 +1,9 @@
+<root>
+<itemName>Guante Sucio</itemName>
+<itemID>1</itemID>
+<itemDesc>Puede matar algun que otro mosntruo</itemDesc>
+<itemIcon>items_205</itemIcon>
+<itemAtk>5</itemAtk>
+<itemSpeed>2</itemSpeed>
+<itemType>Glove</itemType>
+</root>

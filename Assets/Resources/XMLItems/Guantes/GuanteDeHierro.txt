@@ -1,0 +1,9 @@
+<root>
+<itemName>Guante de Hierro</itemName>
+<itemID>2</itemID>
+<itemDesc>Guante usado por ciertos guerreros</itemDesc>
+<itemIcon>items_206</itemIcon>
+<itemAtk>7</itemAtk>
+<itemSpeed>3</itemSpeed>
+<itemType>Glove</itemType>
+</root>

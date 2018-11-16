@@ -1,0 +1,9 @@
+<root>
+<itemName>Diamante</itemName>
+<itemID>6</itemID>
+<itemDesc>Gema con poderes de hielo que ralentiza a los enemigos</itemDesc>
+<itemIcon>items_211</itemIcon>
+<gemElement>0</gemElement>
+<gemAbility>0</gemAbility>
+<itemType>Gem</itemType>
+</root>
