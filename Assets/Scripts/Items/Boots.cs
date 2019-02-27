@@ -2,22 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Glove : Item {
+public class Boots : Item {
+
+    public int itemHP;
 
 
-    public int itemAtk;
-    public int itemSpeed;
-
-
-    public Glove(string name, int id, string desc, Sprite sprite,int level, int dmg, int speed, ItemType type)
+    public Boots(string name, int id, string desc, Sprite sprite,int level, int health, ItemType type)
     {
         itemName = name;
         itemID = id;
         itemDesc = desc;
         itemIcon = sprite;
         itemLevel = level;
-        itemAtk = dmg;
-        itemSpeed = speed;
+        itemHP = health;
         itemType = type;
     }
 }

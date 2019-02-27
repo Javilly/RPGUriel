@@ -6,8 +6,17 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour{
 
 
+    public Sprite spritePrueba;
+    public Sprite spritePrueba2;
+
     private Rigidbody2D rBody;
     Animator animator;
+
+    public GameObject ground;
+
+    public Equipement playerEquipment;
+
+    public Inventory playerInventory;
 
     //Movement
     public float dashSpeed;
@@ -17,16 +26,17 @@ public class Player : MonoBehaviour{
     public float maxWalkSpeed;
     public float jumpSpeed;
     private Vector3 playerVelocity;
+    public bool isGrounded;
+    private float hitDistance;
+    public LayerMask groundLayer;
 
 
-    
 
     public BQuest quest;
 
     //UI
     public GameObject PlayerWindow;
     public Text UIHealth;
-    public Text UIXp;
 
     //STATS
     public int invulnerabilitySecs = 2;
@@ -35,7 +45,22 @@ public class Player : MonoBehaviour{
     public int experience = 0;
     public int level = 1;
     public int damage;
-    
+    public int maxJumpQuantity = 1;
+    public int jumpQuantity;
+    public bool canDash = false;
+
+
+    void Start()
+    {
+        playerVelocity = Vector3.zero;
+        rBody = GetComponent<Rigidbody2D>();
+        dashTime = startDashTime;
+        animator = GetComponent<Animator>();
+        currentHealth = maxHealth;
+        jumpQuantity = maxJumpQuantity;
+}
+
+
 
     public void EnemyKill()
     {
@@ -50,14 +75,24 @@ public class Player : MonoBehaviour{
         }
     }
 
-    void Start()
+    private void PlayerGrounded()
     {
-        playerVelocity = Vector3.zero;
-        rBody = GetComponent<Rigidbody2D>();
-        dashTime = startDashTime;
-        animator = GetComponent<Animator>();
-        currentHealth = maxHealth;
+        Vector2 position = transform.position;
+        Vector2 direction = Vector2.down;
+        float distance = 0.6f;
+
+        RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
+        if (hit.collider != null)
+        {
+            isGrounded = true;
+            jumpQuantity = maxJumpQuantity;
+        }
+        else
+        {
+            isGrounded = false;
+        }
     }
+
 
     void FixedUpdate()
     {
@@ -73,9 +108,20 @@ public class Player : MonoBehaviour{
 
         UIHealth.text = currentHealth.ToString() + "/" + maxHealth.ToString();
 
-        UIXp.text = experience.ToString();
+        PlayerGrounded();
+
 
         playerVelocity.x = Input.GetAxis("Horizontal") * maxWalkSpeed;
+
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            playerInventory.PickupItem(new Gem("Rubi", 1, "Fire Itself", spritePrueba, 1, 2, 2, Item.ItemType.Gem));
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            playerInventory.PickupItem(new Gem("Diamond", 2, "Ice Itself", spritePrueba2, 1, 0, 0, Item.ItemType.Gem));
+        }
 
 
         if (Input.GetKey(KeyCode.A))
@@ -103,8 +149,9 @@ public class Player : MonoBehaviour{
 
         
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && jumpQuantity > 0)
         {
+            jumpQuantity--;
             playerVelocity.y = jumpSpeed;
             animator.SetBool("Jumping", true);
         }
@@ -113,6 +160,8 @@ public class Player : MonoBehaviour{
             playerVelocity.y = rBody.velocity.y;
             animator.SetBool("Jumping", false);
         }
+        
+
 
         rBody.velocity = playerVelocity;
 
@@ -121,11 +170,11 @@ public class Player : MonoBehaviour{
             animator.SetBool("Dashing", false);
 
 
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q) && canDash)
             {
                 animator.SetBool("Dashing", true);
                 direction = 1;
-            }else if (Input.GetKeyDown(KeyCode.E))
+            }else if (Input.GetKeyDown(KeyCode.E) && canDash)
             {
                 animator.SetBool("Dashing", true);
                 direction = 2;

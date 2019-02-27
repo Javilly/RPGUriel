@@ -9,6 +9,7 @@ public class Item {
     public int itemID;
     public string itemDesc;
     public Sprite itemIcon;
+    public int itemLevel;
     public ItemType itemType;
 
 
@@ -16,6 +17,7 @@ public class Item {
     {
         Gem,
         Glove,
-        Potion
+        Potion,
+        Mineral
     }
 }

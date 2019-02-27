@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ExperienceSystem : MonoBehaviour {
 
@@ -11,6 +12,11 @@ public class ExperienceSystem : MonoBehaviour {
 
     private int currentXP;
     private int neededXP;
+
+
+    public Text UIExp;
+    public Text UILevel;
+
 
 
     private int ExperienceNeededNextLvl(int currentLvl)
@@ -43,5 +49,11 @@ public class ExperienceSystem : MonoBehaviour {
     public void LoseExp()
     {
         currentXP = (currentXP / 4) * 3;
+    }
+
+    private void Update()
+    {
+        UIExp.text = currentXP.ToString() + "/" + neededXP.ToString();
+        UILevel.text = currentLvl.ToString();
     }
 }

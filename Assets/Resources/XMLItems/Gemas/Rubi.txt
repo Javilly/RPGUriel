@@ -3,7 +3,7 @@
 <itemID>8</itemID>
 <itemDesc>Gema con poderes de fuego que te otorga daño explosivo</itemDesc>
 <itemIcon>items_212</itemIcon>
-<gemElement>3</gemElement>
-<gemAbility>3</gemAbility>
+<gemElement>2</gemElement>
+<gemAbility>2</gemAbility>
 <itemType>Gem</itemType>
 </root>
