@@ -13,7 +13,6 @@ public class QuestNode
 
     public override string ToString()
     {
-        return string.Format("[NodeTitle: {0} NodeText: {1} NodeImage: {2}",
-            NodeTitle, NodeText, NodeImage);
+        return string.Format("[NodeTitle: {0} NodeText: {1} NodeImage: {2}", NodeTitle, NodeText, NodeImage);
     }
 }
