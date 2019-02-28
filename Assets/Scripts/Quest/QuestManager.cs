@@ -1,47 +1,35 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class QuestManager : MonoBehaviour
-{
-    private Dictionary<string, Sprite> _iconDict;
+public class QuestManager : MonoBehaviour {
 
-    [SerializeField]
-    private Sprite[] _icons;
+    public static QuestManager instance;
+    public Player player;
+    public QuestGiver questGiver;
 
-    [SerializeField]
-    private GameObject _questDialog;
-
-    void Start()
+    private void Awake()
     {
-        _questDialog.SetActive(false);
-        LoadIconsFromSprites();
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
     }
 
-    private void LoadIconsFromSprites()
+    public void EnemyKill()
     {
-        _iconDict = new Dictionary<string, Sprite>();
-        foreach (Sprite sprite in _icons)
+        if (questGiver.quest.active)
         {
-            _iconDict.Add(sprite.name, sprite);
+            questGiver.quest.goal.EnemyKill();
+            if (questGiver.quest.goal.Isreached())
+            {
+                player.experience += questGiver.quest.xpReward;
+                questGiver.quest.Complete();
+            }
         }
     }
 
-    /**
-     * Triggers the start of a quest
-     * questFilePath: supply file path to the xml file
-     **/
-    public void StartQuest(string questFilePath)
-    {
-        _questDialog.SetActive(true);
-        _questDialog.GetComponent<DisplayComponent>()
-            .Initialize(Quest.LoadQuest(questFilePath));      //Uses the Dialog UI and initializes the quest onto the display
-    }
 
-    public Sprite GetIcon(string iconName)
-    {
-        if (_iconDict[iconName] != null)
-            return _iconDict[iconName];
-        else
-            return null;
-    }
 }

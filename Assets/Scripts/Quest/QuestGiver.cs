@@ -13,26 +13,24 @@ public class QuestGiver : MonoBehaviour {
 
     private bool playerNear;
 
+    public string questID = 1.ToString();
+
     public GameObject questWindow;
     public Text titleText;
     public Text descriptionText;
     public Text xpText;
     public Image itemImage;
+    public Image stateImage;
+
+    public Sprite iconNPC;
 
 
-    [XmlAttribute("QuestTitle")]
-    public string QuestTitle;
-
-
-
-    private void Start()
+    void LoadQuest(string questID)
     {
-        //XmlDocument newXml = new XmlDocument();
-        //newXml.Load(Application.dataPath + "/Script/keno.xml");
-
-
+        quest = JsonUtility.FromJson<BQuest>(Resources.Load<TextAsset>("Quests/" + questID).text);
     }
     
+
 
     public void OpenQuestWindow()
     {
@@ -41,6 +39,15 @@ public class QuestGiver : MonoBehaviour {
         descriptionText.text = quest.description;
         xpText.text = quest.xpReward.ToString() + " XP";
         itemImage.sprite = quest.itemReward.itemIcon;
+    }
+
+
+    public void OpenDialogWindow()
+    {
+        questWindow.SetActive(true);
+        titleText.text = quest.title;
+        descriptionText.text = quest.description;
+        itemImage.sprite = iconNPC;
     }
 
 
@@ -80,6 +87,7 @@ public class QuestGiver : MonoBehaviour {
     {
         if (playerNear)
         {
+            LoadQuest(questID);
             OpenQuestWindow();
         }
         if (questWindow.activeInHierarchy)

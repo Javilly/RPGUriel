@@ -1,0 +1,23 @@
+{  
+   "active":false,
+   "finished":false,
+   "title":"Now they shoot",
+   "description":"Please kill 3 -enemy that shoots-",
+   "xpReward":100,
+   "itemReward":{  
+      "itemName":"Rubi",
+      "itemID":3,
+      "itemDesc":"Fire Itself",
+      "itemIcon":{  
+         "instanceID":3532
+      },
+      "itemLevel":1,
+      "itemType":2,
+      "itemEquiped":false
+   },
+   "goal":{  
+      "goalType":0,
+      "requiredAmount":10,
+      "currentAmount":0
+   }
+}

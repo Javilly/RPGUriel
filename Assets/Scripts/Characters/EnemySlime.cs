@@ -26,14 +26,12 @@ public class EnemySlime : MonoBehaviour {
 
     void Awake()
     {
-        // Get a reference to our physics component
         body = GetComponent<Rigidbody2D>();
     }
 
 
     void Start()
     {
-        // Start the idle coroutine
         slimeUpdate = StartCoroutine(Idle());
     }
 
@@ -41,11 +39,10 @@ public class EnemySlime : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            //print("the player is in range!");
             chasingPlayer = true;
-            // Stop Idle
+
             StopCoroutine(slimeUpdate);
-            // Start Agro
+
             slimeUpdate = StartCoroutine(Agro(other.transform));
         }
         else if (transform.position.y == other.transform.position.y && !chasingPlayer)
@@ -98,11 +95,10 @@ public class EnemySlime : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            //print("The player has escaped.");
             chasingPlayer = false;
-            // Stop Agro
+
             StopCoroutine(slimeUpdate);
-            // Start Idle
+
             slimeUpdate = StartCoroutine(Idle());
         }
     }

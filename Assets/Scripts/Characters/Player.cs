@@ -30,7 +30,15 @@ public class Player : MonoBehaviour{
     private float hitDistance;
     public LayerMask groundLayer;
 
+    //Second Movement
+    public CharacterController2D controller;
+    float horizontalMove = 0f;
+    public float runSpeed = 100f;
 
+
+    //Shoot
+    public Transform firePoint;
+    public LineRenderer lineRenderer;
 
     public BQuest quest;
 
@@ -40,11 +48,15 @@ public class Player : MonoBehaviour{
 
     //STATS
     public int invulnerabilitySecs = 2;
-    public int maxHealth = 100;
+    public int initialMaxHealth = 100;
+    public int maxHealth;
     public int currentHealth;
     public int experience = 0;
     public int level = 1;
+    public int initialDamage = 10;
     public int damage;
+    public int initialAtkSpeed = 1;
+    public int attackSpeed;
     public int maxJumpQuantity = 1;
     public int jumpQuantity;
     public bool canDash = false;
@@ -56,24 +68,43 @@ public class Player : MonoBehaviour{
         rBody = GetComponent<Rigidbody2D>();
         dashTime = startDashTime;
         animator = GetComponent<Animator>();
+        maxHealth = initialMaxHealth;
         currentHealth = maxHealth;
         jumpQuantity = maxJumpQuantity;
-}
-
-
-
-    public void EnemyKill()
-    {
-        if (quest.active)
-        {
-            quest.goal.EnemyKill();
-            if (quest.goal.Isreached())
-            {
-                experience += quest.xpReward;
-                quest.Complete();
-            }
-        }
+        damage = initialDamage;
+        attackSpeed = initialAtkSpeed;
     }
+
+    IEnumerator Shoot()
+    {
+        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right);
+
+        if (hitInfo)
+        {
+            Enemy enemy = hitInfo.transform.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
+
+
+            lineRenderer.SetPosition(0, firePoint.position);
+            lineRenderer.SetPosition(1, hitInfo.point);
+        }
+        else
+        {
+            lineRenderer.SetPosition(0, firePoint.position);
+            lineRenderer.SetPosition(1, firePoint.position + firePoint.right * 100);
+        }
+
+        lineRenderer.enabled = true;
+
+        yield return 0;
+
+        lineRenderer.enabled = false;
+    }
+
+
 
     private void PlayerGrounded()
     {
@@ -94,35 +125,38 @@ public class Player : MonoBehaviour{
     }
 
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        /*
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        controller.Move(horizontalMove * Time.fixedDeltaTime);
+    }
 
-        float moveVertical = Input.GetAxis("Vertical");
-
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-
-        rBody.AddForce(movement * maxWalkSpeed);
-        */
+    void Update()
+    {
 
         UIHealth.text = currentHealth.ToString() + "/" + maxHealth.ToString();
 
         PlayerGrounded();
 
 
-        playerVelocity.x = Input.GetAxis("Horizontal") * maxWalkSpeed;
+        //playerVelocity.x = Input.GetAxis("Horizontal") * maxWalkSpeed;
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
 
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            playerInventory.PickupItem(new Gem("Rubi", 1, "Fire Itself", spritePrueba, 1, 2, 2, Item.ItemType.Gem));
+            playerInventory.PickupItem(new Gem("Rubi", 1, "Fire Itself", spritePrueba, 1, 2, 2, Item.ItemType.Gem, false));
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            playerInventory.PickupItem(new Gem("Diamond", 2, "Ice Itself", spritePrueba2, 1, 0, 0, Item.ItemType.Gem));
+            playerInventory.PickupItem(new Mineral("Gold", 2, "Greed", spritePrueba2, 1, 0, Item.ItemType.Mineral, false));
         }
 
+        
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            StartCoroutine(Shoot());
+        }
+        
 
         if (Input.GetKey(KeyCode.A))
         {

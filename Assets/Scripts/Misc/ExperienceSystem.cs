@@ -18,7 +18,6 @@ public class ExperienceSystem : MonoBehaviour {
     public Text UILevel;
 
 
-
     private int ExperienceNeededNextLvl(int currentLvl)
     {
         return Mathf.RoundToInt(100 * Mathf.Pow(Mathf.PI, currentLvl / 5));

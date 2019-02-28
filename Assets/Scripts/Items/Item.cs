@@ -11,6 +11,7 @@ public class Item {
     public Sprite itemIcon;
     public int itemLevel;
     public ItemType itemType;
+    public bool itemEquiped;
 
 
     public enum ItemType
@@ -18,6 +19,7 @@ public class Item {
         Gem,
         Glove,
         Potion,
-        Mineral
+        Mineral,
+        Empty
     }
 }

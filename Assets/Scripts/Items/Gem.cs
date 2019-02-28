@@ -8,7 +8,7 @@ public class Gem : Item {
     public int gemAbility;
 
 
-    public Gem(string name, int id, string desc, Sprite sprite,int level, int element, int ability, ItemType type)
+    public Gem(string name, int id, string desc, Sprite sprite,int level, int element, int ability, ItemType type, bool equiped)
     {
         itemName = name;
         itemID = id;
@@ -18,5 +18,6 @@ public class Gem : Item {
         gemElement = element;
         gemAbility = ability;
         itemType = type;
+        itemEquiped = equiped;
     }
 }

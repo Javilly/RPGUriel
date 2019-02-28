@@ -1,0 +1,23 @@
+{  
+   "active":false,
+   "finished":false,
+   "title":"A sticky problem",
+   "description":"Please kill 3 slimes",
+   "xpReward":100,
+   "itemReward":{  
+      "itemName":"Poti",
+      "itemID":1,
+      "itemDesc":"tremenda poti",
+      "itemIcon":{  
+         "instanceID":3212
+      },
+      "itemLevel":0,
+      "itemType":2,
+      "itemEquiped":false
+   },
+   "goal":{  
+      "goalType":0,
+      "requiredAmount":3,
+      "currentAmount":0
+   }
+}

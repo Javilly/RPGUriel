@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class NPCMago : MonoBehaviour {
 
-
-    public QuestManager questBook;
-    public GameObject canvasQuest;
     private bool playerNear;
 
 

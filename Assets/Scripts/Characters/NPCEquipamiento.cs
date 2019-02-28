@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class NPCEquipamiento : MonoBehaviour {
 
-    private bool playerNear;
+    private bool playerNear = false;
     public Inventory playerInventory;
     public Equipement playerEquipment;
+
+    private Gem selectedGem;
+    private Mineral selectedMineral;
 
 
     void Start()
@@ -50,10 +53,34 @@ public class NPCEquipamiento : MonoBehaviour {
 
     void Update()
     {
-        if (playerNear && Input.GetKeyDown(KeyCode.F))
+        if (playerNear)
         {
-            //playerInventory.OpenInventory();
-            //playerEquipment.OpenEquipment();
+
+            playerInventory.UIActive = false;
+            playerInventory.OpenInventory();
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if(playerInventory.selectedItem.itemType == Item.ItemType.Gem)
+                {
+                    selectedGem = (Gem)playerInventory.selectedItem;
+                    playerEquipment.EquipGem(selectedGem);
+
+                }else if(playerInventory.selectedItem.itemType == Item.ItemType.Mineral)
+                {
+                    selectedMineral = (Mineral)playerInventory.selectedItem;
+                    playerEquipment.EquipMineral(selectedMineral);
+                }
+            }
+
+        }else if (!playerNear)
+        {
+            if (!playerInventory.UIActive)
+            {
+                playerInventory.UIActive = true;
+                playerInventory.CloseInventory();
+            }
+            
         }
     }
 }
