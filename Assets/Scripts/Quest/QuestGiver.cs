@@ -13,17 +13,17 @@ public class QuestGiver : MonoBehaviour {
 
     private bool playerNear;
 
-    public string questID = 1.ToString();
-
+    public int questID = 1;
+    public bool questLoaded = false;
     public GameObject questWindow;
     public Text titleText;
     public Text descriptionText;
     public Text xpText;
     public Image itemImage;
-    public Image stateImage;
+    public GameObject stateGO;
 
     public Sprite iconNPC;
-
+    public Sprite iconState;
 
     void LoadQuest(string questID)
     {
@@ -85,16 +85,35 @@ public class QuestGiver : MonoBehaviour {
 
     void Update()
     {
+        
+
         if (playerNear)
         {
-            LoadQuest(questID);
-            OpenQuestWindow();
+            if (!questLoaded)
+            {
+                LoadQuest(questID.ToString());
+            }
+            
+
+            if (questID%2 == 0)
+            {
+                OpenDialogWindow();
+            }else if(questID%2 == 1)
+            {
+                OpenQuestWindow();
+                if (quest.active)
+                {
+                    quest.Complete();
+                }
+            }
         }
+
         if (questWindow.activeInHierarchy)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
                 AcceptQuest();
+                stateGO.SetActive(true);
                 print("Aceptase una Quest");
             }
         }

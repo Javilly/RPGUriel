@@ -1,0 +1,12 @@
+{  
+   "itemName":"Gold",
+   "itemID":1,
+   "itemDesc":"Greed",
+   "itemIcon":{  
+      "instanceID":3538
+   },
+   "itemLevel":1,
+   "itemType":3,
+   "itemEquiped":false,
+   "mineralAbility":1
+}

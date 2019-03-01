@@ -1,0 +1,13 @@
+{  
+   "itemName":"SuperiorGlove",
+   "itemID":1,
+   "itemDesc":"Here comes the sun tadararam",
+   "itemIcon":{  
+      "instanceID":3518
+   },
+   "itemLevel":4,
+   "itemType":1,
+   "itemEquiped":false,
+   "itemAtk":50,
+   "itemSpeed":4
+}

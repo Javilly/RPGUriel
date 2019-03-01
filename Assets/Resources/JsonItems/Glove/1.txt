@@ -1,0 +1,13 @@
+{  
+   "itemName":"BrokenGlove",
+   "itemID":1,
+   "itemDesc":"Shitty gloves",
+   "itemIcon":{  
+      "instanceID":3510
+   },
+   "itemLevel":1,
+   "itemType":1,
+   "itemEquiped":false,
+   "itemAtk":10,
+   "itemSpeed":1
+}

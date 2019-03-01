@@ -1,0 +1,13 @@
+{  
+   "itemName":"DirtyGlove",
+   "itemID":1,
+   "itemDesc":"Less shitty gloves",
+   "itemIcon":{  
+      "instanceID":3516
+   },
+   "itemLevel":2,
+   "itemType":1,
+   "itemEquiped":false,
+   "itemAtk":15,
+   "itemSpeed":2
+}

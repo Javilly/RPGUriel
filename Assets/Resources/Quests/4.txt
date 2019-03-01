@@ -2,7 +2,7 @@
    "active":false,
    "finished":false,
    "title":"Mage",
-   "description":"I see you killed the slimes, you can ask my friend to help you equip the gems and minerals",
+   "description":"This cave seems very dangerous, but there are a lot of strange gummy slime in this entrance, come to the village I'll find out what's the reason of this attack",
    "xpReward":100,
    "itemReward":{  
       "itemName":"Rubi",

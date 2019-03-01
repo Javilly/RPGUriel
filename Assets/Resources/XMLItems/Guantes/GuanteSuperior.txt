@@ -1,9 +1,0 @@
-<root>
-<itemName>Guante Superior</itemName>
-<itemID>3</itemID>
-<itemDesc>Guante dado a los guerreros mas fuertes</itemDesc>
-<itemIcon>items_208</itemIcon>
-<itemAtk>10</itemAtk>
-<itemSpeed>4</itemSpeed>
-<itemType>Glove</itemType>
-</root>

@@ -18,6 +18,8 @@ public class Player : MonoBehaviour{
 
     public Inventory playerInventory;
 
+    public Glove equippedGlove;
+
     //Movement
     public float dashSpeed;
     private float dashTime;
@@ -39,6 +41,7 @@ public class Player : MonoBehaviour{
     //Shoot
     public Transform firePoint;
     public LineRenderer lineRenderer;
+    private float lastTimeShot;
 
     public BQuest quest;
 
@@ -53,9 +56,9 @@ public class Player : MonoBehaviour{
     public int currentHealth;
     public int experience = 0;
     public int level = 1;
-    public int initialDamage = 10;
+    public int initialDamage;
     public int damage;
-    public int initialAtkSpeed = 1;
+    public int initialAtkSpeed;
     public int attackSpeed;
     public int maxJumpQuantity = 1;
     public int jumpQuantity;
@@ -64,6 +67,9 @@ public class Player : MonoBehaviour{
 
     void Start()
     {
+        equippedGlove = JsonUtility.FromJson<Glove>(Resources.Load<TextAsset>("JsonItems/Glove/BrokenGlove").text);
+        initialDamage = equippedGlove.itemAtk;
+        initialAtkSpeed = equippedGlove.itemSpeed;
         playerVelocity = Vector3.zero;
         rBody = GetComponent<Rigidbody2D>();
         dashTime = startDashTime;
@@ -75,33 +81,43 @@ public class Player : MonoBehaviour{
         attackSpeed = initialAtkSpeed;
     }
 
+
+    public void EquipNewGlove(int posMage)
+    {
+        equippedGlove = JsonUtility.FromJson<Glove>(Resources.Load<TextAsset>("JsonItems/Glove/" + posMage).text);
+        damage = equippedGlove.itemAtk;
+        attackSpeed = equippedGlove.itemSpeed;
+    }
+
+
     IEnumerator Shoot()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right);
-
-        if (hitInfo)
+        if (Time.time - lastTimeShot > 1/attackSpeed)
         {
-            Enemy enemy = hitInfo.transform.GetComponent<Enemy>();
-            if (enemy != null)
+            animator.SetBool("Attacking", true);
+
+            RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, transform.right);
+            Debug.DrawRay(firePoint.position, transform.right, Color.red);
+
+            if (hitInfo)
             {
-                enemy.TakeDamage(damage);
+                Enemy enemy = hitInfo.transform.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(damage);
+                }
             }
 
+            lineRenderer.enabled = true;
 
-            lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, hitInfo.point);
+            yield return 0;
+
+            lineRenderer.enabled = false;
+
+            animator.SetBool("Attacking", false);
+
+            lastTimeShot = Time.time;
         }
-        else
-        {
-            lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, firePoint.position + firePoint.right * 100);
-        }
-
-        lineRenderer.enabled = true;
-
-        yield return 0;
-
-        lineRenderer.enabled = false;
     }
 
 
@@ -152,7 +168,7 @@ public class Player : MonoBehaviour{
         }
 
         
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M) && rBody.velocity == Vector2.zero)
         {
             StartCoroutine(Shoot());
         }

@@ -1,0 +1,12 @@
+{  
+   "itemName":"Iron",
+   "itemID":1,
+   "itemDesc":"Strenght",
+   "itemIcon":{  
+      "instanceID":3542
+   },
+   "itemLevel":1,
+   "itemType":3,
+   "itemEquiped":false,
+   "mineralAbility":0
+}

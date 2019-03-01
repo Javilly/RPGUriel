@@ -2,17 +2,17 @@
    "active":false,
    "finished":false,
    "title":"A sticky problem",
-   "description":"Please kill 3 slimes",
+   "description":"They invaded us! Please help us and kill 3 slimes. If you succeed I'll give you a better glove. I'll wait for you, passing the village valley",
    "xpReward":100,
    "itemReward":{  
-      "itemName":"Poti",
-      "itemID":1,
-      "itemDesc":"tremenda poti",
+      "itemName":"Diamond",
+      "itemID":3,
+      "itemDesc":"Wind Itself",
       "itemIcon":{  
-         "instanceID":3212
+         "instanceID":3524
       },
-      "itemLevel":0,
-      "itemType":2,
+      "itemLevel":1,
+      "itemType":0,
       "itemEquiped":false
    },
    "goal":{  

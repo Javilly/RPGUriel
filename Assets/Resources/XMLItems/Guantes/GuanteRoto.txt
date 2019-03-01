@@ -1,9 +1,0 @@
-<root>
-<itemName>Guante Roto</itemName>
-<itemID>0</itemID>
-<itemDesc>Este guante es una cagada</itemDesc>
-<itemIcon>items_204</itemIcon>
-<itemAtk>3</itemAtk>
-<itemSpeed>1</itemSpeed>
-<itemType>Glove</itemType>
-</root>

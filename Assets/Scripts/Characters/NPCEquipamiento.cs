@@ -8,7 +8,7 @@ public class NPCEquipamiento : MonoBehaviour {
     public Inventory playerInventory;
     public Equipement playerEquipment;
 
-    private Gem selectedGem;
+    public Gem selectedGem;
     private Mineral selectedMineral;
 
 
@@ -61,14 +61,17 @@ public class NPCEquipamiento : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if(playerInventory.selectedItem.itemType == Item.ItemType.Gem)
+                if(playerInventory.selectedItem.itemType == Item.ItemType.Gem && !playerInventory.selectedItem.itemEquiped)
                 {
-                    selectedGem = (Gem)playerInventory.selectedItem;
+                    playerInventory.selectedItem.itemEquiped = true;
+                    selectedGem = JsonUtility.FromJson<Gem>(Resources.Load<TextAsset>("JsonItems/Gem/" + playerInventory.selectedItem.itemName).text);
                     playerEquipment.EquipGem(selectedGem);
 
-                }else if(playerInventory.selectedItem.itemType == Item.ItemType.Mineral)
+
+                }else if(playerInventory.selectedItem.itemType == Item.ItemType.Mineral && !playerInventory.selectedItem.itemEquiped)
                 {
-                    selectedMineral = (Mineral)playerInventory.selectedItem;
+                    playerInventory.selectedItem.itemEquiped = true;
+                    selectedMineral = JsonUtility.FromJson<Mineral>(Resources.Load<TextAsset>("JsonItems/Mineral/" + playerInventory.selectedItem.itemName).text);
                     playerEquipment.EquipMineral(selectedMineral);
                 }
             }

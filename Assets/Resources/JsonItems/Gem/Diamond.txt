@@ -1,0 +1,13 @@
+{  
+   "itemName":"Diamond",
+   "itemID":1,
+   "itemDesc":"Wind Itself",
+   "itemIcon":{  
+      "instanceID":3524
+   },
+   "itemLevel":1,
+   "itemType":0,
+   "itemEquiped":false,
+   "gemElement":0,
+   "gemAbility":0
+}

@@ -15,28 +15,35 @@ public class QuestGoal{
         return (currentAmount >= requiredAmount);
     }
 
-    public void EnemyKill() //se puede poner como argumento el type de enemigo para saber si el enemigo que mataste es el de la quest
+    public void SlimeKill() //se puede poner como argumento el type de enemigo para saber si el enemigo que mataste es el de la quest
     {
-        if(goalType == GoalType.kill)
+        if(goalType == GoalType.slime)
         {
             currentAmount++;
-        }
-        
+        }       
     }
 
-    public void ItemGathered() //lo mismo que para el enemigo
+    public void FlyingKill() //lo mismo que para el enemigo
     {
-        if (goalType == GoalType.Gather)
+        if (goalType == GoalType.flying)
         {
             currentAmount++;
         }
+    }
 
+    public void BossKill() //lo mismo que para el enemigo
+    {
+        if (goalType == GoalType.boss)
+        {
+            currentAmount++;
+        }
     }
 
 }
 
 public enum GoalType
 {
-    kill,
-    Gather
+    slime,
+    flying,
+    boss
 }

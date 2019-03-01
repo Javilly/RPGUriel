@@ -1,0 +1,13 @@
+{  
+   "itemName":"IronGlove",
+   "itemID":1,
+   "itemDesc":"Here starts the good shit",
+   "itemIcon":{  
+      "instanceID":3514
+   },
+   "itemLevel":3,
+   "itemType":1,
+   "itemEquiped":false,
+   "itemAtk":30,
+   "itemSpeed":3
+}

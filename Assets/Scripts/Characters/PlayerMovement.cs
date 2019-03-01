@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour {
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-
 	}
 
 	void FixedUpdate ()

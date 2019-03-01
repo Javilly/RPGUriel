@@ -70,9 +70,13 @@ public class Equipement : MonoBehaviour {
         {
             player.maxJumpQuantity++;
         }
-        if (gemEquipment2[0].gemAbility == 1 || gemEquipment2[1].gemAbility == 1)
+        else if (gemEquipment2[0].gemAbility == 1 || gemEquipment2[1].gemAbility == 1)
         {
             player.canDash = true;
+        }
+        else if (gemEquipment2[0].gemAbility == 2 || gemEquipment2[1].gemAbility == 2)
+        {
+            //Poder para el Rubi
         }
 
     }
